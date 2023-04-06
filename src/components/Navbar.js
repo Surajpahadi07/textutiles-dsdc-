@@ -39,3 +39,9 @@ export default function Navbar(props) {
         </div>
     )
 }
+
+
+                        // after code 
+// git add . 
+// git commit -m "" 
+// git push origin main  

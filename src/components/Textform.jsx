@@ -16,6 +16,10 @@ export default function Textform() {
         let newText = text.toLowerCase();
         setText(newText);
     }
+    const btn3 = () => {
+        let newText = text.toLowerCase();
+        setText("");
+    }
 
     return (
         <div>
@@ -27,6 +31,7 @@ export default function Textform() {
                 <div className='p-2'>
                     <button className='btn btn-primary m-1' onClick={btn1}>UPPER CASE</button>
                     <button className='btn btn-primary m-1' onClick={btn2}>LOWER CASE</button>
+                    <button className='btn btn-primary m-1' onClick={btn3}>CLEAR</button>
                 </div>
             </div>
         </div>
