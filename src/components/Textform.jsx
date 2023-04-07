@@ -24,14 +24,14 @@ export default function Textform() {
         setText(properForm);
     }
     
-    // const btn4 = () => {
-    //     let properForm = text.split(" ");
-    //     let temp = "";
-    //     properForm.forEach((element)=>{
-    //         let element = element.charAt(0).toUpperCase() + element.substr(1,properForm.length).toLowerCase();
-    //         temp   = temp +" "+ element;
-    //         setText(temp);
-    //     })
+    function btn5 () {
+        let properForm = text.split(" ");
+        let temp = "";
+        properForm.forEach((element)=>{
+            element = element.charAt(0).toUpperCase() + element.substr(1,properForm.length).toLowerCase();
+            temp   = temp +" "+ element;
+            setText(temp);
+        })
        
     }
 return (
@@ -46,6 +46,7 @@ return (
                 <button className='btn btn-primary m-1' onClick={btn2}>LOWER CASE</button>
                 <button className='btn btn-primary m-1' onClick={btn3}>CLEAR</button>
                 <button className='btn btn-primary m-1' onClick={btn4}>PROPER FORM</button>
+                <button className='btn btn-primary m-1' onClick={btn5}>CAPITAL ALL WORDS</button>
             </div>
             <div>
                 <h2>Your text Summary</h2>
