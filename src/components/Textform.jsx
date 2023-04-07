@@ -8,23 +8,23 @@ export default function Textform() {
     const handleOnChange = (event) => {
         setText(event.target.value)
     }
-    const btn1 = () => {
+    const textInUpperCase = () => {
         let newText = text.toUpperCase();
         setText(newText);
     }
-    const btn2 = () => {
+    const textInLowerCase = () => {
         let newText = text.toLowerCase();
         setText(newText);
     }
-    const btn3 = () => {
+    const textInCleanCase = () => {
         setText("");
     }
-    const btn4 = () => {
+    const firstWord = () => {
         let properForm = text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
         setText(properForm);
     }
     
-    function btn5 () {
+    function allWordCap () {
         let properForm = text.split(" ");
         let temp = "";
         properForm.forEach((element)=>{
@@ -42,11 +42,11 @@ return (
             <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"
                 value={text} onChange={handleOnChange}></textarea>
             <div className='p-2'>
-                <button className='btn btn-primary m-1' onClick={btn1}>UPPER CASE</button>
-                <button className='btn btn-primary m-1' onClick={btn2}>LOWER CASE</button>
-                <button className='btn btn-primary m-1' onClick={btn3}>CLEAR</button>
-                <button className='btn btn-primary m-1' onClick={btn4}>PROPER FORM</button>
-                <button className='btn btn-primary m-1' onClick={btn5}>CAPITAL ALL WORDS</button>
+                <button className='btn btn-primary m-1' onClick={textInUpperCase}>UPPER CASE</button>
+                <button className='btn btn-primary m-1' onClick={textInLowerCase}>LOWER CASE</button>
+                <button className='btn btn-primary m-1' onClick={textInCleanCase}>CLEAR</button>
+                <button className='btn btn-primary m-1' onClick={firstWord}>PROPER FORM</button>
+                <button className='btn btn-primary m-1' onClick={allWordCap}>CAPITAL ALL WORDS</button>
             </div>
             <div>
                 <h2>Your text Summary</h2>
