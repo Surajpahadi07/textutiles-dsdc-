@@ -28,7 +28,7 @@ export default function Textform() {
         let properForm = text.split(" ");
         let temp = "";
         properForm.forEach((element)=>{
-            element = element.charAt(0).toUpperCase() + element.substr(1,properForm.length).toLowerCase();
+            element = element.charAt(0).toUpperCase() + element.slice(1).toLowerCase();
             temp   = temp +" "+ element;
             setText(temp);
         })
