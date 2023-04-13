@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Textform() {
+export default function Textform(props) {
     //               text is  value and useState is method    (and)     useState is use for updating text value
     const [text, setText] = useState("");
 
@@ -13,22 +13,26 @@ export default function Textform() {
     const textInUpperCase = () => {
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert('success', 'text is convert into upper case')
     }
 
     // sentence change in lower form 
     const textInLowerCase = () => {
         let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert('success', 'text is convert into lower case')
     }
 
     // clean all 
     const textInCleanCase = () => {
         setText("");
+        props.showAlert('success', 'text is clean')
     }
     // first word of sentence be capital 
     const firstWord = () => {
         let properForm = text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
         setText(properForm);
+        props.showAlert('success', 'first word is capital')
     }
     // all words in capital letter 
     function allWordCap() {
@@ -38,6 +42,7 @@ export default function Textform() {
             element = element.charAt(0).toUpperCase() + element.slice(1).toLowerCase();
             temp = temp + " " + element;
             setText(temp);
+            props.showAlert('success', 'all words in capital letter')
         })
 
     }
@@ -46,19 +51,20 @@ export default function Textform() {
     function boldText() {
         let boldValue = document.querySelector("#boldSize").value;
         document.querySelector("#getText").style.fontWeight = boldValue;
+        props.showAlert('success', 'text is bold')
 
     }
 
     // change font style 
     function italicText() {
         document.querySelector("#getText").style.fontStyle = "italic";
-
+        props.showAlert('success', 'text is italic')
     }
 
     // add underline 
     function underlineText() {
         document.querySelector("#getText").style.textDecoration = "underline";
-
+        props.showAlert('success', 'text is underline')
     }
 
 
@@ -66,20 +72,23 @@ export default function Textform() {
     function colorChange() {
         var colorNam = document.querySelector("#colorValue").value;
         document.querySelector("#getText").style.color = colorNam;
+        props.showAlert('success', 'text is color')
     }
 
-    // count words 
     function enterHere() {
         var splitWords = document.querySelector("#getText").value.split(" ");
         let searchName = document.querySelector("#searchName").value;
-        var count = 0
         for (let i = 0; i < splitWords.length; i++) {
-
-            if (splitWords[i] === searchName) {
-                count = count + 1;
+            const regex = /[a-z]/gi;
+            const found = searchName.match(regex);
+            console.log(found)
+            if (found) {
+                props.showAlert('success', 'found')
+            } else {
+                props.showAlert('error', 'not found')
             }
+          
         }
-        alert(count)
     }
 
     // dropdown text editing button 
@@ -95,7 +104,7 @@ export default function Textform() {
     return (
         // jsx in return 
         <>
-            <div className="mb-3 container">
+            <div className="mb-3 container" style={{backgroundColor: props.mode === 'dark'? 'black': 'white', color:props.mode === 'dark'?'white':'black'}}>
                 {/* header part design */}
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end" }}>
                     <div>
@@ -116,7 +125,7 @@ export default function Textform() {
                 <div className='p-2'>
                     {/* dropdown list on click on text editor*/}
                     <div class="dropdown ">
-                        <button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button className={`btn btn-${props.mode} dropdown-toggle`} type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Text Editor
                         </button>
                         <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -156,7 +165,7 @@ export default function Textform() {
             </div>
             {/* your text summary  */}
             <div>
-                <h2>Your text Summary</h2>
+                <h2 style={{backgroundColor: props.mode === 'dark'? 'black': 'white', color:props.mode === 'dark'?'white':'black'}}>Your text Summary</h2>
             </div>
         </>)
 }

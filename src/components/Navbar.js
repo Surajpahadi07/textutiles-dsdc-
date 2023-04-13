@@ -2,9 +2,10 @@
 import React from 'react';
 
 export default function Navbar(props) {
+
     return (
-        <div>
-            <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <div >
+            <nav className={`navbar navbar-expand-lg bg-body-tertiary bg-${props.mode} navbar-${props.mode}`}>
                 <div className="container-fluid">
                     {/* props.title  */}
                     <a className="navbar-brand" href="/">{props.title}</a>
@@ -21,17 +22,9 @@ export default function Navbar(props) {
                                 <a className="nav-link" href="/">Link</a>
                             </li>
                         </ul>
-                        <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                        {/* <div style={{ backgroundColor: "lightblue", height: "500px" }}>
-                            <img src='.\image\ima.png' style={{
-                                position: "absolute",
-                                left: "0px",
-                                width: "100%"
-                            }}></img>
-                        </div> */}
+                        <div className={`form-check form-switch text-${props.mode === 'dark' ? 'white' : 'black'}`}>
+                            <input onClick={props.handleMode} class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" />
+                        </div >
 
                     </div>
                 </div>
@@ -41,7 +34,7 @@ export default function Navbar(props) {
 }
 
 
-                        // after code 
-// git add . 
-// git commit -m "" 
+                        // after code
+// git add .
+// git commit -m ""
 // git push origin main  
